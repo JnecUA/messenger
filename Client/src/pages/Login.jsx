@@ -1,10 +1,16 @@
 import React from 'react';
+import axios from 'axios';
 import './Login.css';
 
 const Login = () => {
+    const Auth = (e) => {
+        axios.post('http://localhost:5000/api/users/auth')
+        .then(response => console.log("status",response.data.status))
+        e.preventDefault();
+    }
     return(
         <div className="login">
-            <form>
+            <form onSubmit={Auth}>
                 <section className="form-section">
                     <input type="email" name="email" className="email-input" />
                     <label htmlFor="email" type="text" className="email-label"><span>Почта или логин</span></label>

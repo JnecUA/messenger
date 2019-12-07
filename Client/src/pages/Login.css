@@ -59,14 +59,17 @@
     transition: .5s;
 }
 
+
 .email-input:focus + .email-label::after,
-.email-input:not(:valid) + .email-label::after,
+.email-input:valid + .email-label::after,
 .pass-input:focus  + .pass-label::after,
 .pass-input:valid + .pass-label::after {
     transform: translateX(0%);
 }
+
+
 .email-input:focus + .email-label span,
-.email-input:invalid + .email-label span,
+.email-input:valid + .email-label span,
 .pass-input:focus  + .pass-label span,
 .pass-input:valid  + .pass-label span {
     transform: translateY(-120%);
