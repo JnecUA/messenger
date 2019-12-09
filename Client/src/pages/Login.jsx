@@ -12,8 +12,8 @@ const Login = () => {
         <div className="login">
             <form onSubmit={Auth}>
                 <section className="form-section">
-                    <input type="email" name="email" className="email-input" />
-                    <label htmlFor="email" type="text" className="email-label"><span>Почта или логин</span></label>
+                    <input type="text" name="email" className="email-input" required />
+                    <label htmlFor="email" className="email-label"><span>Почта</span></label>
                 </section>
                 <section className="form-section">
                     <input type="password" name="password" className="pass-input" required ></input>
