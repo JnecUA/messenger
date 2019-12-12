@@ -14,4 +14,6 @@ const userSchema = new Schema({
         type: String,
         required: true
     }
-})
+});
+
+module.exports = userSchema;

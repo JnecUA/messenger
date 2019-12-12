@@ -4,7 +4,7 @@ const userScheme = require('../models/user')
 const User = mongoose.model("User", userScheme);
 router.post('/register', (req,res) => {
     res.json({
-        'status': 200
+        'name': req.data.name
     })
 })
 
