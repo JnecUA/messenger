@@ -4,8 +4,10 @@ import './Login.css';
 
 const Login = () => {
     const Auth = (e) => {
-        axios.post('http://localhost:5000/api/users/auth')
-        .then(response => console.log("status",response.data.status))
+        axios.post('http://localhost:5000/api/users/auth', {
+            name: 'lol'
+        })
+        .then(response => console.log(response.data))
         e.preventDefault();
     }
     return(

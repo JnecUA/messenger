@@ -22,6 +22,7 @@
   "homepage": "https://github.com/JnecUA/messenger#readme",
   "dependencies": {
     "auth0": "^2.20.0",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "cors-anywhere": "^0.4.1",
     "dotenv": "^8.2.0",
