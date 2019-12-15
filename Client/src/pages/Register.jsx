@@ -63,7 +63,8 @@ class Register extends React.Component {
                 'pass_confirm': this.state.pass_confirm
         })
         .then(res => {
-            if (res.data.errors.length === 0) {
+            console.log(res.data)
+            if (res.data.errors.length == 0) {
                 this.setState({
                     warn: false
                 })
@@ -72,9 +73,10 @@ class Register extends React.Component {
                     warn: true,
                     errors: res.data.errors
                 });
+                e.preventDefault();
             }
         })
-        e.preventDefault();
+        
     }
 
     render(){

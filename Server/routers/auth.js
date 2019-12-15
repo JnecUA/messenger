@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const mongoose = require("mongoose");
 const userScheme = require('../models/user');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const User = mongoose.model("User", userScheme);
 
 
@@ -11,7 +11,7 @@ router.post('/register', async (req,res) => {
     if (req.body.email.length < 6) {
         errors.push('Длина поля "Почта" должна быть больше 6 символов')
     }
-    if ((req.body.email.split('@')[0] == '') || (req.body.email.split('@')[1]) || (req.body.email.split('.').length == 0)){
+    if ((req.body.email.split('@')[0] == '') || (req.body.email.split('@')[1] == '') || (req.body.email.split('.').length == 0)){
         errors.push('Почта не валидна');
     }
     if (req.body.username.length < 6) {
@@ -26,18 +26,26 @@ router.post('/register', async (req,res) => {
     if (req.body.password != req.body.pass_confirm) {
         errors.push('Пароли не совпадают');
     }
-    const user = new User ({
-        email: req.body.email,
-        username: req.body.username,
-        name: req.body.name,
-        password: req.body.password
-    });
-    const emailExist = await user.findOne({email: req.body.email});
+    
+    const emailExist = await User.findOne({email: req.body.email});
     if (emailExist) {
         errors.push('Почта уже зарестрированна')
     }
     if (errors.length == 0) {
-        
+        const salt = await bcrypt.genSalt(10);
+        const hashPass = await bcrypt.hash(req.body.password, salt);
+        const user = new User ({
+            email: req.body.email,
+            username: req.body.username,
+            name: req.body.name,
+            password: hashPass
+        });
+        try{
+            const savedUser = await user.save();
+            res.send('Successfully')
+        }catch{
+            errors.push('Что-то пошло не так, попробуйте позже')
+        }
     }
     res.json({
         errors: errors
