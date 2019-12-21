@@ -1,7 +1,7 @@
 import React from 'react';
 
 const WarningBanner = (props) => {
-    const errors = props.errors
+    const errors = props.errors;
     const listErrors = errors.map((err, i) => 
         <li key={i}>{err}</li>
     );

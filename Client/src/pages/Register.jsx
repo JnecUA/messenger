@@ -3,7 +3,6 @@ import './Register.css';
 import WarningBanner from '../components/WarningBanner';
 import axios from 'axios';
 
-
 class Register extends React.Component {
     constructor(props) {
         super(props);
@@ -13,8 +12,6 @@ class Register extends React.Component {
             name: '',
             password: '',
             pass_confirm: '',
-            showWarning: '',
-            errors: []
         };
         this.emailChange = this.emailChange.bind(this);
         this.usernameChange = this.usernameChange.bind(this);
@@ -63,16 +60,11 @@ class Register extends React.Component {
                 'pass_confirm': this.state.pass_confirm
         })
         .then(res => {
-            console.log(res.data)
             if (res.data.errors.length === 0) {
-                this.setState({
-                    warn: false
-                })
+                this.props.setWarn(false);
             } else {
-                this.setState({
-                    warn: true,
-                    errors: res.data.errors
-                });
+                this.props.setWarn(true);
+                this.props.setErrors(res.data.errors);
             }
         })
         e.preventDefault();
@@ -83,7 +75,7 @@ class Register extends React.Component {
         return(
             <div className="register">
                 <section>   
-                    <WarningBanner errors={this.state.errors} warn={this.state.warn} />
+                    <WarningBanner errors={this.props.errors} warn={this.props.warn} />
                     <form onSubmit={this.register}>
                         <section className="form-section">
                             <input type="text" name="email" className="input" value={this.state.email} onChange={this.emailChange} required  />
