@@ -3,9 +3,12 @@ const app = express();
 const mongoose = require('mongoose');
 const authRouter = require('./routers/auth');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
+app.use(cookieParser());
 
 
 app.use(bodyParser.json());

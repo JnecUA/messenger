@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../img/logo64.png';
-import { Link } from 'react-router-dom';
+import { A } from 'hookrouter';
 import './Header.css';
 
 const Header = () => {
@@ -9,13 +9,13 @@ const Header = () => {
             <div className="container">
                 <div className="row justify-content-between align-items-center">
                     <div className="logo">
-                        <Link to="/" className="row justify-content-between"><img src={logo} alt="logo" /><h2>MESSENGER</h2></Link>
+                        <A href="/" className="row justify-content-between"><img src={logo} alt="logo" /><h2>MESSENGER</h2></A>
                     </div>
                     <nav className="nav">
                         <ul className="row justify-content-between">
-                            <li><Link to="/support">Поддержка</Link></li>
-                            <li><Link to="/login">Войти</Link></li>
-                            <li><Link to="/register">Регестрация</Link></li>
+                            <li><A href="/support">Поддержка</A></li>
+                            <li><A href="/login">Войти</A></li>
+                            <li><A href="/register">Регестрация</A></li>
                         </ul>
                     </nav>
                 </div>
