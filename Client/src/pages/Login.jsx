@@ -5,8 +5,13 @@ import LoginForm from '../components/LoginForm';
 
 class Login extends React.Component{
     submit = values => {
-        console.log(values)
-        
+        axios.post('http://localhost:5000/api/users/auth', {
+            email: values.email,
+            password: values.password
+        })
+        .then((res) => {
+            console.log(res)
+        })
     }
     render(){
         return(

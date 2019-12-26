@@ -8,14 +8,19 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
-app.use(cookieParser());
+app.use(session({
+    secret: process.env.SECRET,
+    resave: true,
+    saveUninitialized: false
+}))
 
+app.use(cookieParser());
 
 app.use(bodyParser.json());
 
 app.use(cors());
 
-mongoose.connect(process.env.DB_URl, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('DB connected successful'));
+mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('DB connected successful'));
 
 
 app.use('/api/users', authRouter);

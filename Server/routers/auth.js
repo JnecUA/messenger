@@ -62,9 +62,16 @@ router.post('/register', async (req,res) => {
     }
 })
 
-router.post('/auth', (req,res) => {
-
-    res.send(req.body)
+router.post('/auth', async (req,res) => {
+    const user = await User.findOne({email: req.body.email})
+    console.log(user)
+    bcrypt.compare(req.body.password, user.password, (err, result) =>  {
+        if (result === true) {
+            return res.send(user);
+        } else {
+            return res.send('Не верный логин или пароль')
+        }
+    })
 })
 
 module.exports = router;
