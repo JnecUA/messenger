@@ -1,14 +1,17 @@
 import React from 'react';
-import './App.css';
-import Header from '../components/Header';
+import '../static/css/App.css';
 import LoginContainer from './LoginContainer';
 import Main from './Main';
 import RegisterContainer from './RegisterContainer';
 import Support from './Support';
+import Header from '../components/Header';
 import { useRoutes } from 'hookrouter';
 import { rootReducer } from '../store/reducers';
 import { createStore } from "redux";
 import { Provider } from 'react-redux';
+import UserPage from './UserPage';
+
+
 
 const store = createStore(rootReducer);
 
@@ -16,7 +19,8 @@ const routes = {
   '/': () => <Main />,
   '/login': () => <LoginContainer />,
   '/register': () => <RegisterContainer />,
-  '/support': () => <Support />
+  '/support': () => <Support />,
+  '/user/:id': ({id}) => <UserPage id={id}/>
 }
 
 function App() {

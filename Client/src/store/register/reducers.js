@@ -20,6 +20,8 @@ export const registerReducer = (state=InitialState, action) => {
                 ...state,
                 errors: action.payload
         }
+        default:
+            return state;
     }
-    return state;
+    
 }

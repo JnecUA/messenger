@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const usersRouter = require('./routers/users')
 require('dotenv').config();
 
 app.use(session({
@@ -24,6 +25,7 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology
 
 
 app.use('/api/users', authRouter);
+app.use('/api', usersRouter);
 
 app.listen(5000, () => {
     console.log('Server start successful');

@@ -18,8 +18,12 @@ router.post('/register', async (req,res) => {
     if (req.body.username.length < 6) {
         errors.push('Длина поля "Имя пользователя" должна быть больше 6 символов');
     }
+    
     if (req.body.name.length < 2) {
         errors.push('Длина поля "Имя" должна быть больше 2 символов')
+    }
+    if (req.body.username.length < 6) {
+        errors.push('Длина поля "Фамилия" должна быть больше 2 символов');
     }
     if (req.body.password.length < 6) {
         errors.push('Длина поля "Пароль" должна быть больше 6 символов')
@@ -42,12 +46,13 @@ router.post('/register', async (req,res) => {
             email: req.body.email,
             username: req.body.username,
             name: req.body.name,
+            lastname: req.body.lastname,
             password: hashPass
         });
         try{
             const savedUser = await user.save();
-        }catch{
-            errors.push('Что-то пошло не так, попробуйте позже')
+        }catch(err){
+            errors.push('Что-то пошло не так, попробуйте позже');
         }
     }
     if (errors.length == 0) {
@@ -64,7 +69,6 @@ router.post('/register', async (req,res) => {
 
 router.post('/auth', async (req,res) => {
     const user = await User.findOne({email: req.body.email})
-    console.log(user)
     bcrypt.compare(req.body.password, user.password, (err, result) =>  {
         if (result === true) {
             return res.send(user);

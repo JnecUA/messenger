@@ -1,5 +1,5 @@
-import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 
 let RegisterForm = props => {
   const { handleSubmit } = props
@@ -16,6 +16,10 @@ let RegisterForm = props => {
       <section className="form-section">
           <Field type="text" name="name" className="input" component="input" required />
           <label htmlFor="name" className="label"><span>Имя</span></label>
+      </section>
+      <section className="form-section">
+          <Field type="text" name="last_name" className="input" component="input" required />
+          <label htmlFor="last_name" className="label"><span>Фамилия</span></label>
       </section>
       <section className="form-section">
           <Field type="password" name="password" className="input" component="input" required />

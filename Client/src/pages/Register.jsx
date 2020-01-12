@@ -1,5 +1,5 @@
 import React from 'react';
-import './Register.css';
+import '../static/css/Register.css';
 import WarningBanner from '../components/WarningBanner';
 import axios from 'axios';
 import RegisterForm from '../components/RegisterForm';
@@ -11,13 +11,14 @@ class Register extends React.Component {
                 'email': values.email,
                 'username': values.username,
                 'name': values.name,
+                'lastname': values.last_name,
                 'password': values.password,
                 'pass_confirm': values.pass_confirm
         })
         .then(res => {
             if (res.data.errors.length === 0) {
                 this.props.setWarn(false);
-                navigate('/')
+                navigate('/login');
             } else {
                 this.props.setWarn(true);
                 this.props.setErrors(res.data.errors);

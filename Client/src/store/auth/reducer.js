@@ -1,7 +1,12 @@
 import { AUTH_CHANGE_WARN_STATE } from './action';
 import { AUTH_CHANGE_ERRORS_LIST } from './action';
 
-export const authReducer = (state=false, action) => {
+const InitState = {
+    errors: [],
+    warn: false
+}
+
+export const authReducer = (state=InitState, action) => {
     switch(
         action.type 
     ){
@@ -15,6 +20,7 @@ export const authReducer = (state=false, action) => {
                 ...state,
                 errors: action.payload
             }
+        default:
+            return state;
     }
-    return state;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './FormSection.css'
+import '../static/css/FormSection.css';
 
 const FormSection = ({name, text, type}) => {
     return(
