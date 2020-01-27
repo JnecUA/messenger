@@ -8,7 +8,7 @@ const User = mongoose.model("User", userScheme);
 router.post('/register', async (req,res) => {
     //VALIDATE
     let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-    errors = [];
+    const errors = [];
     if (req.body.email.length < 6) {
         errors.push('Длина поля "Почта" должна быть больше 6 символов')
     }
@@ -68,8 +68,6 @@ router.post('/register', async (req,res) => {
 })
 
 router.post('/auth', async (req,res) => {
-    console.log(req.body);
-    
     let user = await User.findOne({'email': req.body.email})
     if (user === null) {
         user = await User.findOne({'username': req.body.email})

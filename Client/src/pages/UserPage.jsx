@@ -9,13 +9,21 @@ const UserPage = (id) => {
     const user = cookie.load('user');
     const submit = (values) => {
         axios.put('http://localhost:5000/api/users/'+user._id,{
+            'id': user._id,
             'email': values.email === undefined ? user.email : values.email,
             'username': values.username === undefined ? user.username : values.username,
             'name': values.name === undefined ? user.name : values.name,
-            'lastname': values.last_name === undefined ? user.last_name : values.last_name,
+            'lastname': values.lastname === undefined ? user.lastname : values.lastname,
             'password': values.password === undefined ? '' : values.password,
             'pass_confirm': values.pass_confirm === undefined ? '' : values.pass_confirm,
             'new_pass': values.new_pass === undefined ? '' : values.new_pass
+        })
+        .then((res) => {
+            if (res.data.errors.length === 0) {
+                cookie.save('user', res.data.user, {_path: '/' });
+                window.location.reload()
+            }
+            
         })
     }
     if (isLogged === "true") {
