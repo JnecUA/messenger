@@ -1,34 +1,37 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import CustomInput from './CustomInput';
 
 let RegisterForm = props => {
   const { handleSubmit } = props
   return (
     <form onSubmit={handleSubmit}>
-      <section className="form-section">
-          <Field type="text" name="email" className="input" component="input"  required  />
-          <label htmlFor="email" className="label"><span>Почта</span></label>
-      </section>
-      <section className="form-section">
-          <Field type="text" name="username" className="input" component="input" required />
-          <label htmlFor="username" className="label"><span>Имя пользователя</span></label>
-      </section>
-      <section className="form-section">
-          <Field type="text" name="name" className="input" component="input" required />
-          <label htmlFor="name" className="label"><span>Имя</span></label>
-      </section>
-      <section className="form-section">
-          <Field type="text" name="last_name" className="input" component="input" required />
-          <label htmlFor="last_name" className="label"><span>Фамилия</span></label>
-      </section>
-      <section className="form-section">
-          <Field type="password" name="password" className="input" component="input" required />
-          <label htmlFor="password" type="text" className="label"><span>Пароль</span></label>
-      </section>
-      <section className="form-section">
-          <Field type="password" name="pass_confirm" className="input" component="input" required />
-          <label htmlFor="pass_confirm" type="text" className="label"><span>Подтверждение</span></label>
-      </section>
+      <Field name="email" component={CustomInput} props={{
+          name: 'email',
+          text: 'Почта'
+        }} />
+        <Field name="username" component={CustomInput} props={{
+          name: 'username',
+          text: 'Имя пользователя'
+        }} />
+        <Field name="name" component={CustomInput} props={{
+          name: 'name',
+          text: 'Имя'
+        }} />
+        <Field name="last_name" component={CustomInput} props={{
+          name: 'last_name',
+          text: 'Фамилия'
+        }} />
+        <Field name="password" component={CustomInput} props={{
+          type: 'password',
+          name: 'password',
+          text: 'Пароль'
+        }} />
+        <Field name="pass_confirm" component={CustomInput} props={{
+          type: 'password',
+          name: 'pass_confirm',
+          text: 'Подтверждение'
+        }} />
       <input className="form-btn" type="submit" value="Зарегестрироваться"/>
     </form>
   )

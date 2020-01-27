@@ -6,35 +6,30 @@ import '../static/css/UserPage.css';
 
 const UserPage = (id) => {
     const isLogged = cookie.load('isLogged');
+    const user = cookie.load('user');
+    const submit = (values) => {
+        axios.put('http://localhost:5000/api/users/'+user._id,{
+            'email': values.email === undefined ? user.email : values.email,
+            'username': values.username === undefined ? user.username : values.username,
+            'name': values.name === undefined ? user.name : values.name,
+            'lastname': values.last_name === undefined ? user.last_name : values.last_name,
+            'password': values.password === undefined ? '' : values.password,
+            'pass_confirm': values.pass_confirm === undefined ? '' : values.pass_confirm,
+            'new_pass': values.new_pass === undefined ? '' : values.new_pass
+        })
+    }
     if (isLogged === "true") {
-        const user = cookie.load('user');
         if (user._id === id.id) {
-            console.log(user)
             return(
                 <div className="account-settings">
                     <h1>Настройки</h1>
-                    <FormSettings user={user} />
-                </div>
-            )
-            
-        } else {
-            axios.post(`http://localhost:5000/api/users/${id}`)
-            .then((res) => {
-                const user = res.data.name + res.data.lastname;
-                
-            })
-            return (
-                <div className="user-info">
-                    <h2>Страница пользователя {user}</h2>
+                    <FormSettings user={user} onSubmit={submit} />
                 </div>
             )
             
         }
-    } else {
-        return <h1>Просматривать страницы пользователье могут только пользователи данного приложения</h1>
     }
-    
-    
+    return <h1>Вы не можете просматривать другие страницы</h1>
 }
 
 export default UserPage

@@ -7,6 +7,8 @@ import { navigate } from "hookrouter";
 
 class Register extends React.Component {
     submit = values => {
+        
+        
         axios.post('http://localhost:5000/api/users/register', {
                 'email': values.email,
                 'username': values.username,
@@ -23,6 +25,7 @@ class Register extends React.Component {
                 this.props.setWarn(true);
                 this.props.setErrors(res.data.errors);
             }
+            
         })
         
     }

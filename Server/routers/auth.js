@@ -68,12 +68,21 @@ router.post('/register', async (req,res) => {
 })
 
 router.post('/auth', async (req,res) => {
-    const user = await User.findOne({email: req.body.email})
+    console.log(req.body);
+    
+    let user = await User.findOne({'email': req.body.email})
+    if (user === null) {
+        user = await User.findOne({'username': req.body.email})
+        if (user === null) {
+            return res.send('Не верный логин или пароль')
+        }
+    }
     bcrypt.compare(req.body.password, user.password, (err, result) =>  {
         if (result === true) {
+            user.password = req.body.password;
             return res.send(user);
         } else {
-            return res.send('Не верный логин или пароль')
+            return res.send('Не верный пароль')
         }
     })
 })

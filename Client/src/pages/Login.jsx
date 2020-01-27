@@ -11,10 +11,9 @@ class Login extends React.Component{
         axios.post('http://localhost:5000/api/users/auth', {
             email: values.email,
             password: values.password
-        })
+        }) 
         .then((res) => {
-            console.log(res)
-            if (res.data === 'Не верный логин или пароль') {
+            if ((res.data === 'Не верный логин или пароль') || (res.data === 'Не верный пароль')) {
                 this.props.setWarn(true);
                 this.props.setErrors(['Не верный логин или пароль']);
             } else {

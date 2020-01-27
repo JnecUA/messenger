@@ -39,3 +39,6 @@
     font-weight: 300;
 }
 
+.exit {
+    cursor: pointer;
+}

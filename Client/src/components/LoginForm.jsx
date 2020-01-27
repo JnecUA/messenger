@@ -1,18 +1,20 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import CustomInput from './CustomInput';
 
 let LoginForm = props => {
   const {handleSubmit} = props
   return (
     <form onSubmit={handleSubmit}>
-        <section className="form-section">
-            <Field type="text" name="email" className="input" component="input" required />
-            <label htmlFor="email" className="label"><span>Почта</span></label>
-        </section>
-        <section className="form-section">
-            <Field type="password" name="password" className="input" component="input" required />
-            <label htmlFor="password" type="text" className="label"><span>Пароль</span></label>
-        </section>
+        <Field name="email" component={CustomInput} props={{
+          name: 'email',
+          text: 'Почта или Логин'
+        }} />
+        <Field name="password" component={CustomInput} props={{
+          type: 'password',
+          name: 'password',
+          text: 'Пароль'
+        }} />
         <input type="submit" value="Войти" className="form-btn" />
     </form>
   )

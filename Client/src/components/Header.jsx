@@ -19,7 +19,7 @@ const Navigate = () => {
                 <ul className="row justify-content-between">
                     <li><A href="/support">Поддержка</A></li>
                     <li><A href={userURL} style={{'margin': "0 15px"}}>{user.name + ' ' + user.lastname}</A></li>
-                    <li><a onClick={isLoggedChange}>Выход</a></li>
+                    <li><a className="exit" onClick={isLoggedChange}>Выход</a></li>
                 </ul>
             </nav>
         )
