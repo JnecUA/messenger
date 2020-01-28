@@ -8,14 +8,14 @@ let LoginForm = props => {
     <form onSubmit={handleSubmit}>
         <Field name="email" component={CustomInput} props={{
           name: 'email',
-          text: 'Почта или Логин'
+          text: 'Email or Username'
         }} />
         <Field name="password" component={CustomInput} props={{
           type: 'password',
           name: 'password',
-          text: 'Пароль'
+          text: 'Password'
         }} />
-        <input type="submit" value="Войти" className="form-btn" />
+        <input type="submit" value="Log In" className="form-btn" />
     </form>
   )
 }

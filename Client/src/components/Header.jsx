@@ -7,6 +7,7 @@ import cookie from 'react-cookies';
 const Navigate = () => {
     const isLogged = cookie.load('isLogged');
     const user = cookie.load('user');
+    
     const isLoggedChange = () =>  {
         cookie.save('isLogged', false);
         cookie.remove('user');
@@ -17,9 +18,9 @@ const Navigate = () => {
         return(
             <nav className="nav">
                 <ul className="row justify-content-between">
-                    <li><A href="/support">Поддержка</A></li>
+                    <li><A href="/support">Support</A></li>
                     <li><A href={userURL} style={{'margin': "0 15px"}}>{user.name + ' ' + user.lastname}</A></li>
-                    <li><a className="exit" onClick={isLoggedChange}>Выход</a></li>
+                    <li><a className="exit" onClick={isLoggedChange}>Log out</a></li>
                 </ul>
             </nav>
         )
@@ -27,9 +28,9 @@ const Navigate = () => {
         return(
             <nav className="nav">
                 <ul className="row justify-content-between">
-                    <li><A href="/support">Поддержка</A></li>
-                    <li><A href="/login">Войти</A></li>
-                    <li><A href="/register">Регестрация</A></li>
+                    <li><A href="/support">Support</A></li>
+                    <li><A href="/login">Log in</A></li>
+                    <li><A href="/register">Registration</A></li>
                 </ul>
             </nav>
         )

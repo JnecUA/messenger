@@ -13,9 +13,9 @@ class Login extends React.Component{
             password: values.password
         }) 
         .then((res) => {
-            if ((res.data === 'Не верный логин или пароль') || (res.data === 'Не верный пароль')) {
+            if ((res.data === 'Wrong login or password') || (res.data === 'Wrong password')) {
                 this.props.setWarn(true);
-                this.props.setErrors(['Не верный логин или пароль']);
+                this.props.setErrors(['Wrong login or password']);
             } else {
                 cookie.save('isLogged', true, {_path: '/' });
                 cookie.save('user', res.data, {_path: '/' });

@@ -23,7 +23,6 @@ app.use(cors());
 
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('DB connected successful'));
 
-
 app.use('/api/users', authRouter);
 app.use('/api', usersRouter);
 

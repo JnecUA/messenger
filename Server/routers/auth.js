@@ -10,34 +10,34 @@ router.post('/register', async (req,res) => {
     let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     const errors = [];
     if (req.body.email.length < 6) {
-        errors.push('Длина поля "Почта" должна быть больше 6 символов')
+        errors.push('Email field must be longer than 6 characters')
     }
     if (reg.test(req.body.email)  == false){
-        errors.push('Почта не валидна');
+        errors.push('Email invalid');
     }
     if (req.body.username.length < 6) {
-        errors.push('Длина поля "Имя пользователя" должна быть больше 6 символов');
+        errors.push('Username field must be longer than 6 characters');
     }
     
     if (req.body.name.length < 2) {
-        errors.push('Длина поля "Имя" должна быть больше 2 символов')
+        errors.push('Name field must be longer than 2 characters')
     }
     if (req.body.username.length < 6) {
-        errors.push('Длина поля "Фамилия" должна быть больше 2 символов');
+        errors.push('Last name field must be longer than 2 characters');
     }
     if (req.body.password.length < 6) {
-        errors.push('Длина поля "Пароль" должна быть больше 6 символов')
+        errors.push('Password field must be longer than 6 characters')
     }
     if (req.body.password != req.body.pass_confirm) {
-        errors.push('Пароли не совпадают');
+        errors.push('Passwords do not match');
     }
     
     const emailExist = await User.findOne({email: req.body.email});
     const usernameExist = await User.findOne({username: req.body.username});
     if (emailExist) {
-        errors.push('Пользователь с данной почтой уже зарегестрирован')
+        errors.push('A user with this email is already registered')
     } else if (usernameExist) {
-        errors.push('Пользователь с данным ником уже зарегестрирован')
+        errors.push('A user with this username is already registered')
     }
     if (errors.length == 0) {
         const salt = await bcrypt.genSalt(10);
@@ -52,7 +52,7 @@ router.post('/register', async (req,res) => {
         try{
             const savedUser = await user.save();
         }catch(err){
-            errors.push('Что-то пошло не так, попробуйте позже');
+            errors.push('Something went wrong, try again later');
         }
     }
     if (errors.length == 0) {
@@ -72,7 +72,7 @@ router.post('/auth', async (req,res) => {
     if (user === null) {
         user = await User.findOne({'username': req.body.email})
         if (user === null) {
-            return res.send('Не верный логин или пароль')
+            return res.send('Wrong login or password')
         }
     }
     bcrypt.compare(req.body.password, user.password, (err, result) =>  {
@@ -80,7 +80,7 @@ router.post('/auth', async (req,res) => {
             user.password = req.body.password;
             return res.send(user);
         } else {
-            return res.send('Не верный пароль')
+            return res.send('Wrong password')
         }
     })
 })

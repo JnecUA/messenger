@@ -9,7 +9,7 @@ import { useRoutes } from 'hookrouter';
 import { rootReducer } from '../store/reducers';
 import { createStore } from "redux";
 import { Provider } from 'react-redux';
-import UserPage from './UserPage';
+import UserPageContainer from './UserPageContainer';
 
 
 
@@ -20,7 +20,7 @@ const routes = {
   '/login': () => <LoginContainer />,
   '/register': () => <RegisterContainer />,
   '/support': () => <Support />,
-  '/user/:id': ({id}) => <UserPage id={id}/>
+  '/user/:id': ({id}) => <UserPageContainer id={id}/>
 }
 
 function App() {

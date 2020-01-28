@@ -10,45 +10,45 @@ let FormSettings = props => {
       <Field component={CustomInput} name="email" props={{
         type: 'text',
         name: 'email',
-        text: 'Почта',
+        text: 'Email',
         defaultValue: user.email
       }}/>
       <Field component={CustomInput} name="username" props={{
         type: 'text',
         name: 'username',
-        text: 'Имя пользователя',
+        text: 'Username',
         defaultValue: user.username
       }}/>
 
       <Field component={CustomInput} name="name" props={{
         type: 'text',
         name: 'name',
-        text: 'Имя',
+        text: 'Name',
         defaultValue: user.name
       }}/>
       <Field component={CustomInput} name="lastname" props={{
         type: 'text',
         name: 'lastname',
-        text: 'Фамилия',
+        text: 'Last name',
         defaultValue: user.lastname
       }}/>
       <br />
       <Field component={CustomInput} name="password" props={{
         type: 'password',
         name: 'password',
-        text: 'Старый Пароль'
+        text: 'Old password'
       }}/>
       <Field component={CustomInput} name="pass_confirm" props={{
         type: 'password',
-        name: 'pass_confirm',
-        text: 'Подтверждение пароля'
+        name: 'new_pass',
+        text: 'New Password'
       }}/>
       <Field component={CustomInput} name="new_pass" props={{
         type: 'password',
-        name: 'new_pass',
-        text: 'Новый пароль'
+        name: 'pass_confirm',
+        text: 'Password confirm'
       }}/>
-      <input className="form-btn" type="submit" value="Сохранить"/>
+      <input className="form-btn" type="submit" value="Save"/>
     </form>
   )
 }

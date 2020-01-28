@@ -8,31 +8,31 @@ let RegisterForm = props => {
     <form onSubmit={handleSubmit}>
       <Field name="email" component={CustomInput} props={{
           name: 'email',
-          text: 'Почта'
+          text: 'Email'
         }} />
         <Field name="username" component={CustomInput} props={{
           name: 'username',
-          text: 'Имя пользователя'
+          text: 'Username'
         }} />
         <Field name="name" component={CustomInput} props={{
           name: 'name',
-          text: 'Имя'
+          text: 'Name'
         }} />
         <Field name="last_name" component={CustomInput} props={{
           name: 'last_name',
-          text: 'Фамилия'
+          text: 'Last name'
         }} />
         <Field name="password" component={CustomInput} props={{
           type: 'password',
           name: 'password',
-          text: 'Пароль'
+          text: 'Password'
         }} />
         <Field name="pass_confirm" component={CustomInput} props={{
           type: 'password',
           name: 'pass_confirm',
-          text: 'Подтверждение'
+          text: 'Password confirm'
         }} />
-      <input className="form-btn" type="submit" value="Зарегестрироваться"/>
+      <input className="form-btn" type="submit" value="Register"/>
     </form>
   )
 }
