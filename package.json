@@ -1,0 +1,26 @@
+{
+  "name": "messenger",
+  "version": "1.0.0",
+  "description": "Messenger(only auth)",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm-run-all --parallel startClient startServer",
+    "setup": "cd Client && npm i && cd ../Server && npm i",
+    "startClient": "cd Client && npm start",
+    "startServer": "cd Server && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JnecUA/messenger.git"
+  },
+  "author": "Roman K.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JnecUA/messenger/issues"
+  },
+  "homepage": "https://github.com/JnecUA/messenger#readme",
+  "dependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
