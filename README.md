@@ -7,17 +7,14 @@ How to setup and start
 ===============
 1.Install Node.js LTS on https://nodejs.org/en/
 2.Clone my project or download
-
-.. code-block:: bash
-    git clone https://github.com/JnecUA/messenger.git
+git clone https://github.com/JnecUA/messenger.git
 
 3.Setup all modules
 
-.. code-block:: bash
-    cd messenger
-    npm install
-    npm run setup
+`cd messenger`
+`npm install`
+`npm run setup`
 
 4.Start
-.. code-block:: bash
-    npm start
+
+`npm start`
