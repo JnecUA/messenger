@@ -21,11 +21,12 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('DB connected successful'));
-
 app.use('/api/users', authRouter);
 app.use('/api', usersRouter);
 
-app.listen(5000, () => {
+app.listen(9999, () => {
     console.log('Server start successful');
 });
+
+mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('DB connected successful'));
+

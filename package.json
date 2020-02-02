@@ -4,10 +4,10 @@
   "description": "Messenger(only auth)",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all --parallel startClient startServer",
+    "start": "npm run startClient && npm run startServer",
     "setup": "cd Client && npm i && cd ../Server && npm i",
-    "startClient": "cd Client && npm start",
-    "startServer": "cd Server && npm start",
+    "startClient": "cd Client && start serve -s build",
+    "startServer": "cd Server && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,8 +19,5 @@
   "bugs": {
     "url": "https://github.com/JnecUA/messenger/issues"
   },
-  "homepage": "https://github.com/JnecUA/messenger#readme",
-  "dependencies": {
-    "npm-run-all": "^4.1.5"
-  }
+  "homepage": "https://github.com/JnecUA/messenger#readme"
 }
