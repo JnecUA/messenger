@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run startClient && npm run startServer",
-    "setup": "cd Client && npm i && cd ../Server && npm i",
+    "setup": "npm i serve && cd Client && npm i && cd ../Server && npm i",
     "startClient": "cd Client && start serve -s build",
     "startServer": "cd Server && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
